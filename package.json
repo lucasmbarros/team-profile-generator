@@ -4,7 +4,8 @@
   "description": "A command line application that accepts user input to generate an html page with a team roster",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
