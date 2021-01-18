@@ -1,102 +1,123 @@
-// create the about section
-const generateAbout = (aboutText) => {
-    if (!aboutText) {
-      return "";
-    }
-  
+const createTeam = (teamArr) => {
+  const managerInfo = (manager) => {
     return `
-    <section class="my-3" id="about">
-        <h2 class="text-dark bg-primary p-2 display-inline-block">About Me</h2>
-        <p>${aboutText}</p>
-      </section>
-    `;
+   
+    <div class="card shadow" style="width: 18rem;">
+    <div class="card-body bg-dark text-white">
+      <h5 class="card-title text-white">${manager.getName()}</h5>
+      <p class="card-text manager text-white"><i class="fas fa-briefcase"></i> ${manager.getRole()}</p>
+    </div>
+    <div class="container bg-secondary p-4">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><i class="fas fa-id-badge"></i> ${manager.getId()}</li>
+      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+      <li class="list-group-item"><i class="fas fa-phone"></i> ${manager.getOfficeNumber()}</li>
+    </ul>
+    </div>
+  </div>
+ `;
   };
-  
-  const generateProjects = (projectsArr) => {
+
+  const engineerInfo = (engineer) => {
     return `
-        <section class="my-3" id="portfolio">
-          <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
-          <div class="flex-row justify-space-between">
-          ${projectsArr
-            .filter(({ feature }) => feature)
-            .map(({ name, description, languages, link }) => {
-              return `
-              <div class="col-12 mb-2 bg-dark text-light p-3">
-                <h3 class="portfolio-item-title text-light">${name}</h3>
-                <h5 class="portfolio-languages">
-                  Built With:
-                  ${languages.join(", ")}
-                </h5>
-                <p>${description}</p>
-                <a href="${link}" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
-              </div>
-            `;
-            })
-            .join("")}
-    
-          ${projectsArr
-            .filter(({ feature }) => !feature)
-            .map(({ name, description, languages, link }) => {
-              return `
-              <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-                <h3 class="portfolio-item-title text-light">${name}</h3>
-                <h5 class="portfolio-languages">
-                  Built With:
-                  ${languages.join(", ")}
-                </h5>
-                <p>${description}</p>
-                <a href="${link}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
-              </div>
-            `;
-            })
-            .join("")}
-          </div>
-        </section>
-      `;
+   
+    <div class="card shadow" style="width: 18rem;">
+    <div class="card-body bg-dark text-white">
+      <h5 class="card-title text-white">${engineer.getName()}</h5>
+      <p class="card-text engineer text-white"><i class="fas fa-clipboard"></i> ${engineer.getRole()}</p>
+    </div>
+    <div class="container bg-secondary p-4">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><i class="fas fa-id-badge"></i> ${engineer.getId()}</li>
+      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+      <li class="list-group-item"><i class="fab fa-github"></i> <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
+    </ul>
+    </div>
+  </div>
+ `;
   };
-  
-  module.exports = (templateData) => {
-    // destructure page data by section
-    const { projects, about, ...header } = templateData;
-  
+
+  const internInfo = (intern) => {
     return `
-      <!DOCTYPE html>
-      <html lang="en">
-    
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Portfolio Demo</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-      </head>
-    
-      <body>
-        <header>
-          <div class="container flex-row justify-space-between align-center py-3">
-            <h1 class="page-title text-secondary bg-dark py-2 px-3">${
-              header.name
-            }</h1>
-            <nav class="flex-row">
-              <a class="ml-2 my-1 px-2 py-1 bg-secondary text-dark" href="https://github.com/${
-                header.github
-              }">GitHub</a>
-            </nav>
-          </div>
-        </header>
-        <main class="container my-5">
-              ${generateAbout(about)}
-              ${generateProjects(projects)}
-        </main>
-        <footer class="container text-center py-3">
-          <h3 class="text-dark">&copy; ${new Date().getFullYear()} by ${
-      header.name
-    }</h3>
-        </footer>
-      </body>
-      </html>
-      `;
+   
+  <div class="card shadow" style="width: 18rem;">
+    <div class="card-body bg-dark text-white">
+      <h5 class="card-title text-white">${intern.getName()}</h5>
+      <p class="card-text intern text-white"><i class="fas fa-graduation-cap"></i> ${intern.getRole()}</p>
+    </div>
+    <div class="container bg-secondary p-4">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><i class="fas fa-id-badge"></i> ${intern.getId()}</li>
+      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+      <li class="list-group-item"><i class="fas fa-school"></i> ${intern.getSchool()}</li>
+    </ul>
+    </div>
+  </div>
+  `;
   };
+
+  const html = [];
+
+  html.push(
+    teamArr
+      .filter((employee) => employee.getRole() === "Manager")
+      .map((manager) => managerInfo(manager))
+  );
+
+  html.push(
+    teamArr
+      .filter((employee) => employee.getRole() === "Engineer")
+      .map((engineer) => engineerInfo(engineer))
+  );
+
+  html.push(
+    teamArr
+      .filter((employee) => employee.getRole() === "Intern")
+      .map((intern) => internInfo(intern))
+  );
+
+  return html.join(" ");
+};
+
+module.exports = (teamArr) => {
+  return `
   
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Builder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+
+</head>
+
+<body>
+${teamArr
+  .filter((employee) => employee.getRole() === "Manager")
+  .map(({ teamName }) => {
+    return `
+    <div class="jumbotron bg-dark jumbotron-fluid text-white">
+<div class="container text-center">
+<h1 class="display-4">${teamName}</h1>
+</div>
+</div>
+  `;
+  })
+  .join("")}
+
+<main>
+ <div class="d-flex justify-content-around">
+  ${createTeam(teamArr)}
+ </div>
+</main>
+
+
+</body>
+
+</html>
+  `;
+};
