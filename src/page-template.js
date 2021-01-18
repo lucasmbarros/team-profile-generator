@@ -2,7 +2,7 @@ const createTeam = (teamArr) => {
   const managerInfo = (manager) => {
     return `
    
-    <div class="card shadow" style="width: 18rem;">
+    <div class="card shadow rounded-lg" style="width: 18rem;">
     <div class="card-body bg-dark text-white">
       <h5 class="card-title text-white">${manager.getName()}</h5>
       <p class="card-text manager text-white"><i class="fas fa-briefcase"></i> ${manager.getRole()}</p>
@@ -10,7 +10,7 @@ const createTeam = (teamArr) => {
     <div class="container bg-secondary p-4">
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><i class="fas fa-id-badge"></i> ${manager.getId()}</li>
-      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
+      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${manager.getEmail()}" class="text-decoration-none">${manager.getEmail()}</a></li>
       <li class="list-group-item"><i class="fas fa-phone"></i> ${manager.getOfficeNumber()}</li>
     </ul>
     </div>
@@ -21,7 +21,7 @@ const createTeam = (teamArr) => {
   const engineerInfo = (engineer) => {
     return `
    
-    <div class="card shadow" style="width: 18rem;">
+    <div class="card shadow rounded-lg" style="width: 18rem;">
     <div class="card-body bg-dark text-white">
       <h5 class="card-title text-white">${engineer.getName()}</h5>
       <p class="card-text engineer text-white"><i class="fas fa-clipboard"></i> ${engineer.getRole()}</p>
@@ -29,7 +29,7 @@ const createTeam = (teamArr) => {
     <div class="container bg-secondary p-4">
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><i class="fas fa-id-badge"></i> ${engineer.getId()}</li>
-      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${engineer.getEmail()}" class="text-decoration-none">${engineer.getEmail()}</a></li>
       <li class="list-group-item"><i class="fab fa-github"></i> <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
     </ul>
     </div>
@@ -40,7 +40,7 @@ const createTeam = (teamArr) => {
   const internInfo = (intern) => {
     return `
    
-  <div class="card shadow" style="width: 18rem;">
+  <div class="card shadow rounded-lg" style="width: 18rem;">
     <div class="card-body bg-dark text-white">
       <h5 class="card-title text-white">${intern.getName()}</h5>
       <p class="card-text intern text-white"><i class="fas fa-graduation-cap"></i> ${intern.getRole()}</p>
@@ -48,7 +48,7 @@ const createTeam = (teamArr) => {
     <div class="container bg-secondary p-4">
     <ul class="list-group list-group-flush">
       <li class="list-group-item"><i class="fas fa-id-badge"></i> ${intern.getId()}</li>
-      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></li>
+      <li class="list-group-item"><i class="fas fa-at"></i> <a href="mailto:${intern.getEmail()}" class="text-decoration-none">${intern.getEmail()}</a></li>
       <li class="list-group-item"><i class="fas fa-school"></i> ${intern.getSchool()}</li>
     </ul>
     </div>
@@ -102,7 +102,7 @@ ${teamArr
     return `
     <div class="jumbotron bg-dark jumbotron-fluid text-white">
 <div class="container text-center">
-<h1 class="display-4">${teamName}</h1>
+<h1 class="display-4 font-weight-bold">${teamName}</h1>
 </div>
 </div>
   `;
